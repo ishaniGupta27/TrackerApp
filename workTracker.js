@@ -10,7 +10,7 @@ var response = app.displayDialog("What's are you working on?", {
 })
 
 //app.displayDialog("Hello, " + (response.textReturned) + ".")
-var path = Path("/Users/ishani.gupta/dev/TrackerApp/work.txt")
+var path = Path("work.txt") //TODO: Add Path of your file here
 var filestring = path.toString()
 var date = new Date();
 var wwork = "\n"+ date +" : "+response.textReturned
