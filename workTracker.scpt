@@ -1,7 +1,7 @@
 var app = Application.currentApplication()
 app.includeStandardAdditions = true
  
-var response = app.displayDialog("What's are you working on?", {
+var response = app.displayDialog("What are you working on?", {
     defaultAnswer: "",
     withIcon: "note",
     buttons: ["Cancel", "Continue"],
