@@ -1,6 +1,6 @@
 var app = Application.currentApplication()
 app.includeStandardAdditions = true
- 
+
 var response = app.displayDialog("What are you working on?", {
     defaultAnswer: "",
     withIcon: "note",
@@ -17,30 +17,23 @@ writeTextToFile(wwork,filestring,false)
 
 function writeTextToFile(text, file, overwriteExistingContent) {
     try {
- 
         var fileString = file.toString()
- 
         var openedFile = app.openForAccess(Path(fileString), { writePermission: true })
- 
+
         if (overwriteExistingContent) {
             app.setEof(openedFile, { to: 0 })
         }
- 
-        app.write(text, { to: openedFile, startingAt: app.getEof(openedFile) })
- 
+
+        // Always append with newline
+        var safeText = text + "\n";
+
+        // Shift +1 so we don't overwrite last char
+        app.write(safeText, { to: openedFile, startingAt: app.getEof(openedFile) + 1 })
+
         app.closeAccess(openedFile)
- 
         return true
-    }
-    catch(error) {
- 
-        try {
-            app.closeAccess(file)
-        }
-        catch(error) {
-            console.log(`Couldn't close file: ${error}`)
-        }
- 
+    } catch (error) {
+        try { app.closeAccess(file) } catch (e) {}
         return false
     }
 }
