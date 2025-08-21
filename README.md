@@ -1,6 +1,5 @@
 # TrackerApp
 
-**Description:**  
 TrackerApp is a simple macOS automation script to help you track what you are working on throughout your day. The app prompts you every hour with a dialog asking what task you’re currently focusing on, then logs your input with a timestamp to a local text file for easy review later.
 
 ---
